@@ -23,10 +23,6 @@
     justify-content: center;
 }
 
-.register_page{
-    height: 50rem;
-}
-
 .register_page div{
     margin: 2.5rem;
 }
@@ -35,9 +31,8 @@
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    border: 1px solid white;
-    padding: 1.5rem;
-    width: 50%;
+    border: 2px solid white;
+    width: 70%;
 }
 
 .Registrarse{
@@ -56,6 +51,7 @@
 
 .inputs_register:focus{
     outline: none;
+    color: white;
 }
 
 .inputs_register::placeholder{
