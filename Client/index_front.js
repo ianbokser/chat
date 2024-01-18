@@ -17,7 +17,7 @@ register.addEventListener('click', function () {
         .then(data => {
             console.log('Respuesta del servidor:', data);
             if(data){
-                location.href ="../Pages/Log_in.html";
+                location.href ="../Pages/chat.html";
             }
         })
         .catch(error => {
