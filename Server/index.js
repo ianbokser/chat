@@ -4,7 +4,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { connectToDatabase, checkUserCredentials, userExists  } from './functions.js';
+import { userExists, registUser  } from './functions.js';
 
 
 const port = process.env.PORT ?? 3005;
@@ -26,8 +26,19 @@ app.use(bodyParser.json());
 app.post('/login', async (req, res) => {
     try {
     const { user, password } = req.body;
-    const registered = await userExists (user, password)
-    res.json(registered);
+    const login  = await userExists ('localhost', 'ian', '123456', 'users', user, password)
+    res.json(login);
+    }catch (error) {
+        console.error('Error en la solicitud:', error);
+        res.status(500).json({ error: 'Error interno del servidor.' });
+    }
+});
+
+app.post('/register', async (req, res) => {
+    try {
+    const { user, password } = req.body;
+    const registered = registUser('localhost', 'ian', '123456', 'users', user, password)
+    res.json({ message: 'Usuario registrado exitosamente.' });
     }catch (error) {
         console.error('Error en la solicitud:', error);
         res.status(500).json({ error: 'Error interno del servidor.' });

@@ -1,13 +1,12 @@
 import { createConnection } from 'mysql';
 
-export async function checkUserCredentials(_user, _password) {
+export async function checkUserCredentials(_host, __user, __password, _database, _user, _password) {
     const connection = createConnection({
-        host: 'localhost',
-        user: 'ian',
-        password: '123456',
-        database: 'rol',
+        host: _host,
+        user: __user,
+        password: __password,
+        database: _database,
     });
-
     return new Promise((resolve, reject) => {
         connection.connect((err) => {
             if (err) {
@@ -15,7 +14,6 @@ export async function checkUserCredentials(_user, _password) {
                 reject(err);
                 return;
             }
-
             const query = 'SELECT * FROM usuarios WHERE user = ? AND password = ?';
             connection.query(query, [_user, _password], (err, results) => {
                 if (err) {
@@ -23,10 +21,7 @@ export async function checkUserCredentials(_user, _password) {
                     reject(err);
                     return;
                 }
-
                 connection.end();
-
-                // Si hay algún resultado, significa que existe un usuario con esos credenciales
                 const userExists = results.length > 0;
                 resolve(userExists);
             });
@@ -34,7 +29,7 @@ export async function checkUserCredentials(_user, _password) {
     });
 }
 
-export async function connectToDatabase(_host, _user, _password, _database) {
+export async function registerUser(_host, _user, _password, _database, password, email) {
     const connection = createConnection({
         host: _host,
         user: _user,
@@ -49,16 +44,43 @@ export async function connectToDatabase(_host, _user, _password, _database) {
                 reject(err);
                 return;
             }
-            console.log('Conexión exitosa');
-            resolve(connection);
+
+            const sql = 'INSERT INTO `users`(`user`, `password`) VALUES (?, ?)';
+            const values = [password, email];
+
+            connection.query(sql, values, (error, results) => {
+                connection.end();
+
+                if (error) {
+                    console.error('Error al registrar el usuario:', error);
+                    reject(error);
+                } else {
+                    console.log('Usuario registrado exitosamente.');
+                    resolve(results);
+                }
+            });
         });
     });
 }
 
-export function userExists(user, password) {
+export function registUser (_host, _user, _password, _database, user, password) {
     return new Promise(async (resolve, reject) => {
         try {
-            const userExists = await checkUserCredentials(user, password);
+            const userExists = await registerUser(_host, _user, _password, _database, user, password);
+            resolve(userExists);
+        } catch (error) {
+            console.error('Error al conectar a la base de datos:', error);
+            reject(error);
+        }
+    });
+}
+
+
+
+export function userExists(_host, _user, _password, _database, user, password) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const userExists = await checkUserCredentials(_host, _user, _password, _database, user, password);
             resolve(userExists);
         } catch (error) {
             console.error('Error al conectar a la base de datos:', error);
