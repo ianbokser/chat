@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  justify-content: right;
+  max-width: 100%;
+  font-family: 'DM Sans';
+}
+
+body{
+  color: white;
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,87,121,1) 100%) no-repeat;
+}
+
+main{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.chat{
+  border: 3px solid #ccc;
+  height: 90vh;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages{
+  height: 90%;
+  border: 0.5rem solid black;
+}
+
+.forms{
+  width: 100%;
+  display: flex;
+}
+
+.input{
+    border-radius: 1rem;
+    border: 1px solid #eee;
+    margin: 10px;
+    width: 80%;
+    height: 50%;
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.input::placeholder {
+    text-size-adjust: 100px;
+}
+
+.enviar{
+  background: rgb(0, 61, 102);
+  color: #fff;
+  height: 70px;
+  width: 10%;
+  border-radius: 1rem;
+}
+
+.enviar:hover{
+  background: #0cf;
+}

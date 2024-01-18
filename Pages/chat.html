@@ -10,10 +10,12 @@
 <body>
     <main>
         <section id="chat" class="chat">
-            <ul id="messages"></ul>
+            <div class="messages">
+                <ul id="messages"></ul>
+            </div>    
             <form class="form" id="form">
-            <input type="text" name="message" id="input" placeholder="Type a message" autocomplete="off" class="input" />
-            <button class="enviar" type="submit">Send</button>
+                <input class="input" type="text" name="message" id="input" placeholder="Type a message" autocomplete="off"/>
+                <button class="enviar" type="submit">Send</button>
             </form>
         </section>
     </main>
