@@ -91,3 +91,8 @@
     text-decoration: none;
     color: black;
 }
+
+.pressed {
+    background-color: #007bff;
+    color: #fff;
+}
