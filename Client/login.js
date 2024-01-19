@@ -19,7 +19,7 @@ loginButton.addEventListener('click', function () {
         .then(response => response.json())
         .then(data => {
             console.log('Respuesta del servidor:', data);
-            if(data){
+            if(data.login){
                 location.href ="./Pages/chat.html";
             }
         })
