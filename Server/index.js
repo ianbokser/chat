@@ -74,6 +74,7 @@ io.on('connection', async (socket) => {
         io.emit('chat message', msg);
     });
 });
+
 app.use(logger('dev'));
 
 app.get('/', (req, res) => {

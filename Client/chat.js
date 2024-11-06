@@ -7,9 +7,10 @@ const input = document.getElementById('input');
 const messages = document.getElementById('messages')
 
 socket.on('chat message', (msg) => {
+    const user = localStorage.getItem('user');
     const item = `
         <li>
-            <small>ian: </small>
+            <small>${user}</small>
             <p>${msg}</p> 
         </li>`
     messages.insertAdjacentHTML('beforeend', item)

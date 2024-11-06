@@ -3,18 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chat</title>
+    <title>Chat</title>
     <link rel="stylesheet" href="../Css/chatStyle.css">
     <script type="module" src="../Client/chat.js"></script>
 </head>
 <body>
     <main>
-        <section id="chat" class="chat">
-            <ul id="messages"></ul> 
-            <form id="form">
-                <input class="input" name="message" type="text" id="input" placeholder="Type a message" autocomplete="off"/>
-                <button class="enviar" type="submit">Send</button>
-            </form>
+        <section id="phone-frame">
+            <div id="chat" class="chat">
+                <!-- Barra superior del chat -->
+                <div class="chat-header">
+                    <img src="https://i.pravatar.cc/40" alt="Adrian's Profile Picture" class="profile-pic">
+                    <span class="contact-name">Adrian</span>
+                </div>
+                <!-- Mensajes del chat -->
+                <ul id="messages"></ul>
+                <!-- Formulario para enviar mensajes -->
+                <form id="form">
+                    <input class="input" name="message" type="text" id="input" placeholder="Escribe un mensaje" autocomplete="off"/>
+                    <button class="enviar" type="submit">
+                        <img src="https://preview.redd.it/w39kucuqzvwc1.jpeg?auto=webp&s=17d5b0045bf1ef7db06650252662f156ea4056f2" alt="Enviar">
+                    </button>
+                </form>
+            </div>
         </section>
     </main>
 </body>

@@ -20,6 +20,7 @@ loginButton.addEventListener('click', function () {
         .then(data => {
             console.log('Respuesta del servidor:', data);
             if(data.login){
+                localStorage.setItem('user', data.user);
                 location.href ="./Pages/chat.html";
             }
         })
